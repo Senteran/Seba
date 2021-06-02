@@ -1,6 +1,8 @@
 import pygame
 import random
 
+from lib import constants
+
 def main():
     pygame.init()
 
@@ -20,8 +22,20 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_1:
+                    screen = pygame.display.set_mode((1920,1080))
+                if event.key == pygame.K_2:
+                    screen = pygame.display.set_mode((1280,720))
+                if event.key == pygame.K_3:
+                    screen = pygame.display.set_mode((1000, 1000))
         
         screen.fill((50,50,50))
+
+        display_info = pygame.display.Info()
+        width = display_info.current_w
+        height = display_info.current_h
 
         for i in range(8):
             screen.blit(images[i], (coords[i][0], coords[i][1]))
@@ -32,27 +46,27 @@ def main():
             if dir_change == 51:
                 directions[i][1] = not directions[i][1]
             if directions[i][0]:
-                dir_modifier_x = 1
+                dir_modifier_x = constants.move_value
             else:
-                dir_modifier_x = -1
+                dir_modifier_x = -1 * constants.move_value
             if directions[i][1]:
-                dir_modifier_y = 1
+                dir_modifier_y = constants.move_value
             else:
-                dir_modifier_y = -1
+                dir_modifier_y = -1 * constants.move_value
 
-            if(ran < 4):
+            if True:
                 coords[i][1] = coords[i][1] + dir_modifier_y
-            else:
+            if True:
                 coords[i][0] = coords[i][0] + dir_modifier_x
             
-            if(coords[i][0] > 1100):
+            if(coords[i][0] > width - 50):
                 coords[i][0] = 10
-            if(coords[i][1] > 600):
+            if(coords[i][1] > height - 50):
                 coords[i][1] = 10
             if(coords[i][0] < 0):
-                coords[i][0] = 1100
+                coords[i][0] = width - 50
             if(coords[i][1] < 0):
-                coords[i][1] = 600
+                coords[i][1] = height - 50
 
         pygame.display.flip()
 
