@@ -6,9 +6,8 @@ from lib import constants
 def main():
     pygame.init()
 
-    image = pygame.image.load('seba.png')
-    images = [pygame.image.load('cl.png'), pygame.image.load('erty.png'), pygame.image.load('exeos.png'), pygame.image.load('hot.png'), pygame.image.load('kfra.png'), pygame.image.load('krup.png'), pygame.image.load('seba.png'), pygame.image.load('sent.png')]
-    pygame.display.set_icon(image)
+    images = [pygame.image.load('img\cl.png'), pygame.image.load('img\erty.png'), pygame.image.load('img\exeos.png'), pygame.image.load('img\hot.png'), pygame.image.load('img\kfra.png'), pygame.image.load('img\krup.png'), pygame.image.load('img\seba.png'), pygame.image.load('img\sent.png')]
+    pygame.display.set_icon(images[6])
     pygame.display.set_caption('Seba!')
 
     screen = pygame.display.set_mode((1280,720))
